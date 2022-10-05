@@ -1,0 +1,5 @@
+The rovers cannot leave their perimeter, nor can roads be entered that leave their perimeter.
+
+Once a rover completes its run, it is withdrawn.
+
+The data entry has already been validated.
