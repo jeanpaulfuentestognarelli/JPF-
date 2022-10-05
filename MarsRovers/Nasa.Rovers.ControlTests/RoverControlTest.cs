@@ -23,11 +23,123 @@ MMRMMRMRRM";
             Assert.AreEqual(expected, result);
         }
         [Test]
-        public void Rover1Movement1()
+        public void Rover1Movement1S()
         {
             string input = @"2 2
 1 1 S
 M";
+
+            string expected = @"1 0 S";
+
+            RoverControl roverControl = new(input);
+
+            roverControl.Start();
+            string result = roverControl.CurrentPositions;
+
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void Rover1Movement1W()
+        {
+            string input = @"2 2
+1 1 W
+M";
+
+            string expected = @"0 1 W";
+
+            RoverControl roverControl = new(input);
+
+            roverControl.Start();
+            string result = roverControl.CurrentPositions;
+
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void Rover1Movement1N()
+        {
+            string input = @"2 2
+1 1 N
+M";
+
+            string expected = @"1 2 N";
+
+            RoverControl roverControl = new(input);
+
+            roverControl.Start();
+            string result = roverControl.CurrentPositions;
+
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void Rover1Movement1E()
+        {
+            string input = @"2 2
+1 1 E
+M";
+
+            string expected = @"2 1 E";
+
+            RoverControl roverControl = new(input);
+
+            roverControl.Start();
+            string result = roverControl.CurrentPositions;
+
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void Rover1RotateRightAndMovement1S()
+        {
+            string input = @"2 2
+1 1 S
+RM";
+
+            string expected = @"0 1 W";
+
+            RoverControl roverControl = new(input);
+
+            roverControl.Start();
+            string result = roverControl.CurrentPositions;
+
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void Rover1RotateRightAndMovement1W()
+        {
+            string input = @"2 2
+1 1 W
+RM";
+
+            string expected = @"1 2 N";
+
+            RoverControl roverControl = new(input);
+
+            roverControl.Start();
+            string result = roverControl.CurrentPositions;
+
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void Rover1RotateRightAndMovement1N()
+        {
+            string input = @"2 2
+1 1 N
+RM";
+
+            string expected = @"2 1 E";
+
+            RoverControl roverControl = new(input);
+
+            roverControl.Start();
+            string result = roverControl.CurrentPositions;
+
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void Rover1RotateRightAndMovement1E()
+        {
+            string input = @"2 2
+1 1 E
+RM";
 
             string expected = @"1 0 S";
 

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kernel", "Kernel\Kernel.csproj", "{EFF38E4E-563C-44E7-B376-1DC6A940C0B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kernel", "Kernel\Kernel.csproj", "{EFF38E4E-563C-44E7-B376-1DC6A940C0B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nasa.Rovers.Control", "Nasa.Rovers.Control\Nasa.Rovers.Control.csproj", "{A7EEC45C-D2CF-4CB3-882E-F9E1A1A7A34B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nasa.Rovers.Control", "Nasa.Rovers.Control\Nasa.Rovers.Control.csproj", "{A7EEC45C-D2CF-4CB3-882E-F9E1A1A7A34B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nasa.Rovers.Util", "Nasa.Rovers.Util\Nasa.Rovers.Util.csproj", "{E8BE918D-D60E-4DF0-B0FD-EA7E0D1D04DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nasa.Rovers.Util", "Nasa.Rovers.Util\Nasa.Rovers.Util.csproj", "{E8BE918D-D60E-4DF0-B0FD-EA7E0D1D04DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nasa.Rovers.ControlTests", "Nasa.Rovers.ControlTests\Nasa.Rovers.ControlTests.csproj", "{7316A028-1DA5-409F-945B-D90D92CEFFF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nasa.Rovers.ControlTests", "Nasa.Rovers.ControlTests\Nasa.Rovers.ControlTests.csproj", "{7316A028-1DA5-409F-945B-D90D92CEFFF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

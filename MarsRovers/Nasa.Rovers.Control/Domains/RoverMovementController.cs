@@ -1,6 +1,5 @@
 ﻿using Kernel;
 using Nasa.Rovers.Control.DataObjects;
-using System.Text.RegularExpressions;
 using System.Globalization;
 using Nasa.Rovers.Control.DomainEvents;
 using Nasa.Rovers.Control.Enums;
@@ -9,35 +8,41 @@ namespace Nasa.Rovers.Control.Domains
 {
     internal class RoverMovementController : Domain
     {
-        public RoverMovementController(Dispatcher dispatcher) : base(dispatcher) { }        
+        private readonly Queue<string> _instructions;
+        public RoverMovementController(Dispatcher dispatcher) : base(dispatcher) 
+        {
+            _instructions = new Queue<string>();
+        }        
 
-        internal void MoveRover(Rover rover, string path) 
+        internal void MoveRover(string path) 
         {
             foreach (char instruction in path)
-                ProcessInstruction(rover, instruction.ToString());                            
+                _instructions.Enqueue(instruction.ToString());
+            ProcessInstruction();
         }
-
-        private void ProcessInstruction(Rover rover, string instruction)
+        internal void ProcessInstruction()
         {
+            string? instruction;
+            if (_instructions.TryDequeue(out instruction) == false)
+                return;
+
             instruction = instruction.ToUpper(CultureInfo.InvariantCulture);
             if (instruction == "M")
-                SetMovement(rover);
+                AddEvent(new MoveInstructionSent());
             if (instruction == "L" || instruction == "R")
-                SetOrientation(rover, instruction);
+                AddEvent(new OrientationInstructionSent(instruction));
         }
 
-        private void SetOrientation(Rover rover, string instruction)
+        internal void SetOrientation(Rover rover, string instruction)
         {
             int orientation = (int)rover.Orientation;
             int newOrientation = instruction == "L" ? orientation + 3 : orientation + 1;
             orientation = newOrientation % 4;
 
-
-
             AddEvent(new RoverInstructionReceived(new Rover(rover.X, rover.Y, (Orientation)orientation)));
         }
 
-        private void SetMovement(Rover rover)
+        internal void SetMovement(Rover rover)
         {
             int newX = rover.X, newY = rover.Y;
             switch (rover.Orientation) 

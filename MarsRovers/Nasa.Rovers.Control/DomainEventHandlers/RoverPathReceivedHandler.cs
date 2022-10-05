@@ -18,9 +18,8 @@ namespace Nasa.Rovers.Control.DomainEventHandlers
 
         public override void Handle(IDomainEvent domainEvent)
         {
-            string path = ((RoverPathReceived)domainEvent).Path;
-            Rover currentRover = RoverWatcher.GetCurrentRover();
-            RoverMovementController.MoveRover(currentRover, path);
+            string path = ((RoverPathReceived)domainEvent).Path;           
+            RoverMovementController.MoveRover(path);
         }
     }
 }

@@ -27,7 +27,9 @@ namespace Nasa.Rovers.Control
             MapReceivedHandler mapReceivedHandler = new MapReceivedHandler(dispatcher, roverWatcher);
             RoverReceivedHandler roverReceivedHandler = new RoverReceivedHandler(dispatcher, roverWatcher);
             RoverPathReceivedHandler roverPathReceivedHandler = new RoverPathReceivedHandler(dispatcher, roverWatcher, roverMovementController);
-            RoverInstructionReceivedHandler roverInstructionReceivedHandler = new RoverInstructionReceivedHandler(dispatcher, roverWatcher);
+            RoverInstructionReceivedHandler roverInstructionReceivedHandler = new RoverInstructionReceivedHandler(dispatcher, roverWatcher, roverMovementController);
+            OrientationInstructionSentHandler orientationInstructionSentHandler = new OrientationInstructionSentHandler(dispatcher, roverWatcher, roverMovementController);
+            MoveInstructionSentHandler moveInstructionSentHandler = new MoveInstructionSentHandler(dispatcher, roverWatcher, roverMovementController);
 
             inputProcessor.Process();
             dispatcher.DispatchEvents();

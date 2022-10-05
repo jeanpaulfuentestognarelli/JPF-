@@ -6,30 +6,33 @@ namespace Nasa.Rovers.Control.Domains
 {
     internal class RoverWatcher : Domain
     {
-        private readonly List<Rover> _rovers;
+        public List<Rover> Rovers { get; private set; }
         internal Map Map { get; private set; }
         public RoverWatcher(Dispatcher dispatcher) : base(dispatcher)
         {
             Map = new Map(0, 0);
-            _rovers = new List<Rover>();
+            Rovers = new List<Rover>();
         }
         internal void SetMap(Map map) => Map = map;                
-        internal void AddRover(Rover rover) => _rovers.Add(rover);
+        internal void AddRover(Rover rover) => Rovers.Add(rover);
         internal string GetRoversStatus()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (Rover rover in _rovers)
+            foreach (Rover rover in Rovers)
                 sb.AppendLine(rover.ToString());
             return sb.ToString().Trim();
         }
-        internal Rover GetCurrentRover() => _rovers.Last();
+        internal Rover GetCurrentRover() => Rovers.Last();
 
         internal void UpdateCurrentRover(Rover rover) 
         {
-            if (_rovers == null || _rovers.Count == 0) 
+            if (Rovers == null || Rovers.Count == 0) 
                 return;
+            if (rover.X > Map.Width || rover.Y > Map.Height || rover.X < 0 || rover.Y < 0)
+                rover = new Rover(-1, -1, rover.Orientation);
 
-            _rovers[_rovers.Count - 1] = rover;
+            Rovers.RemoveAt(Rovers.Count - 1);
+            AddRover(rover);
         }
     }
 }
