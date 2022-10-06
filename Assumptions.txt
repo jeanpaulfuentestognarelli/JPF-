@@ -1,4 +1,4 @@
-The rovers cannot leave their perimeter, nor can roads be entered that leave their perimeter.
+If a rover falls from the plateau, its coordinates will become (-1, -1) and it will maintain the orientation with which it fell into the void. 
 
 Once a rover completes its run, it is withdrawn.
 
