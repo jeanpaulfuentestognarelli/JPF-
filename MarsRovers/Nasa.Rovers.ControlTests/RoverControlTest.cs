@@ -182,5 +182,33 @@ MM";
 
             Assert.AreEqual(expected, result);
         }
+        [Test]
+        public void BaseTestOnlyFirst()
+        {
+            string input = @"5 5
+1 2 N
+LMLMLMLMM";
+            string expected = @"1 3 N";
+            RoverControl roverControl = new(input);
+
+            roverControl.Start();
+            string result = roverControl.CurrentPositions;
+
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void BaseTestOnlySecond()
+        {
+            string input = @"5 5
+3 3 E
+MMRMMRMRRM";
+            string expected = @"5 1 E";
+            RoverControl roverControl = new(input);
+
+            roverControl.Start();
+            string result = roverControl.CurrentPositions;
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
