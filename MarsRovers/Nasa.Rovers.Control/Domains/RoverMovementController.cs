@@ -24,7 +24,10 @@ namespace Nasa.Rovers.Control.Domains
         {
             string? instruction;
             if (_instructions.TryDequeue(out instruction) == false)
+            {
+                AddEvent(new MovementFinished());
                 return;
+            }
 
             instruction = instruction.ToUpper(CultureInfo.InvariantCulture);
             if (instruction == "M")

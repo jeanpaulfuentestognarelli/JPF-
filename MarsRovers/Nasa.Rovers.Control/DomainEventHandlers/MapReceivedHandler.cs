@@ -7,15 +7,18 @@ namespace Nasa.Rovers.Control.DomainEventHandlers
     internal class MapReceivedHandler : DomainEventHandler
     {
         public RoverWatcher RoverWatcher { get; private set; }
+        public InputProcessor InputProcessor { get; private set; }
 
-        public MapReceivedHandler(Dispatcher dispatcher, RoverWatcher roverWatcher) : base(dispatcher)
+        public MapReceivedHandler(Dispatcher dispatcher, RoverWatcher roverWatcher, InputProcessor inputProcessor) : base(dispatcher)
         {
             RoverWatcher = roverWatcher;
+            InputProcessor = inputProcessor;
         }
 
         public override void Handle(IDomainEvent domainEvent)
         {
             RoverWatcher.SetMap(((MapReceived)domainEvent).Map);
+            InputProcessor.Process();
         }
     }
 }
